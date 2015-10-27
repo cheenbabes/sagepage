@@ -4,7 +4,6 @@
 
 
         <div class="list">
-
             <label class="item item-input item-select">
                 <div class="input-label">
                     Book
@@ -12,24 +11,33 @@
                 <select ng-model="book" ng-options="book.book for book in books track by book.id"></select>
             </label>
 
-            This is showing "book" model: {{book}} Months: {{months}} Years: {{years}}
+            This is showing "book" model: {{book}}
 
         </div>
-        <div class="list card">
-            <div class="item item-divider">Health</div>
-            <div class="item item-body">
-                <div>
-                    You ate an apple today!
+
+        <div class="list">
+            <label class="item item-input item-select">
+                <div class="input-label">
+                    Months
                 </div>
-            </div>
+                <select ng-model="month" ng-options="month for month in allMonths track by month"></select>
+            </label>
+
+            Showing month: {{month}}
         </div>
-        <div class="list card">
-            <div class="item item-divider">Upcoming</div>
-            <div class="item item-body">
-                <div>
-                    You have <b>29</b> meetings on your calendar tomorrow.
+
+        <div class="list">
+
+            <label class="item item-input item-select">
+                <div class="input-label">
+                    Years
                 </div>
-            </div>
+                <select ng-model="year" ng-options="year for year in allYears track by year"></select>
+            </label>
+            Showing year: {{year}} All years: {{allYears}} Allmonths: {{allMonths}}
+
         </div>
+
+        Total Days: {{(+year)*365 + (+month)*30}} Pages to Read: {{book.pages / ((+year)*365 + (+month)*30)}}
     </ion-content>
 </ion-view>

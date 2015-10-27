@@ -37,9 +37,18 @@ angular.module('starter.controllers', [])
             book: "Caitanya Caritamrta",
             pages: 6621
  }
-]
-    $scope.months = 1;
-    $scope.years = 0;
+];
+
+    $scope.allMonths = [];
+    for (var i = 1; i < 13; i++) {
+        $scope.allMonths.push(i);
+    };
+    $scope.allYears = [];
+    for (var i = 0; i < 11; i++) {
+        $scope.allYears.push(i);
+    };
+
+    $scope.totalMonths = parseInt($scope.year) * 12 + parseInt($scope.month)
 
 })
 
