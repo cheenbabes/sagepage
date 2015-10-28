@@ -10,9 +10,6 @@
                 </div>
                 <select ng-model="book" ng-options="book.book for book in books track by book.id"></select>
             </label>
-
-            This is showing "book" model: {{book}}
-
         </div>
 
         <div class="list">
@@ -22,8 +19,6 @@
                 </div>
                 <select ng-model="month" ng-options="month for month in allMonths track by month"></select>
             </label>
-
-            Showing month: {{month}}
         </div>
 
         <div class="list">
@@ -34,10 +29,9 @@
                 </div>
                 <select ng-model="year" ng-options="year for year in allYears track by year"></select>
             </label>
-            Showing year: {{year}} All years: {{allYears}} Allmonths: {{allMonths}}
-
         </div>
 
-        Total Days: {{(+year)*365 + (+month)*30}} Pages to Read: {{book.pages / ((+year)*365 + (+month)*30)}}
+        <h3>To read {{book.book}} in {{year == 0 ? '' : year}} {{year == 1 ? 'year' : year !== 0 ? 'years' :'' }} 
+           {{month == 0 ? '' : 'and ' + month}} {{month == 1 ? 'month' : month !== 0 ? 'months': ''}} you will have to read <b>{{formatPages(book, year, month)}} </b>pages a day</h3>
     </ion-content>
 </ion-view>

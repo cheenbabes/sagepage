@@ -40,7 +40,7 @@ angular.module('starter.controllers', [])
 ];
 
     $scope.allMonths = [];
-    for (var i = 1; i < 13; i++) {
+    for (var i = 0; i < 13; i++) {
         $scope.allMonths.push(i);
     };
     $scope.allYears = [];
@@ -48,7 +48,19 @@ angular.module('starter.controllers', [])
         $scope.allYears.push(i);
     };
 
-    $scope.totalMonths = parseInt($scope.year) * 12 + parseInt($scope.month)
+    //initialize variables
+    $scope.book = $scope.books[0];
+    $scope.month = 1;
+    $scope.year = 0;
+
+    //make sure that book pages per day always returns at least 1
+    $scope.formatPages = function (book, year, month) {
+        var intYear = parseInt(year);
+        var intMonth = parseInt(month);
+
+        return Math.ceil(book.pages / (month * 30 + year * 365));
+    }
+
 
 })
 
