@@ -31,7 +31,7 @@
             </label>
         </div>
 
-        <h3>To read {{book.book}} in {{year == 0 ? '' : year}} {{year == 1 ? 'year' : year !== 0 ? 'years' :'' }} 
-           {{month == 0 ? '' : 'and ' + month}} {{month == 1 ? 'month' : month !== 0 ? 'months': ''}} you will have to read <b>{{formatPages(book, year, month)}} </b>pages a day</h3>
+        <h3>To read {{book.book}} in {{year == 0 ? '' : year}} {{year == 1 ? 'year' : year !== 0 ? 'years' :'' }} {{year !== 0 && month !== 0 ? 'and' : ''}}
+           {{month == 0 ? '' : month}} {{month == 1 ? 'month' : month !== 0 ? 'months': ''}} you will have to read <b>{{formatPages(book, year, month)}} </b>{{formatPages(book, year, month) == 1 ? 'page' : 'pages'}} a day</h3>
     </ion-content>
 </ion-view>
