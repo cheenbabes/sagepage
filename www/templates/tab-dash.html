@@ -1,28 +1,37 @@
 <ion-view view-title="Dashboard">
-  <ion-content class="padding">
-    <div class="list card">
-      <div class="item item-divider">Recent Updates</div>
-      <div class="item item-body">
-        <div>
-          There is a fire in <b>sector 3</b>
+    <ion-content class="padding">
+
+
+
+        <div class="list">
+            <label class="item item-input item-select">
+                <div class="input-label">
+                    Book
+                </div>
+                <select ng-model="book" ng-options="book.book for book in books track by book.id"></select>
+            </label>
         </div>
-      </div>
-    </div>
-    <div class="list card">
-      <div class="item item-divider">Health</div>
-      <div class="item item-body">
-        <div>
-          You ate an apple today!
+
+        <div class="list">
+            <label class="item item-input item-select">
+                <div class="input-label">
+                    Months
+                </div>
+                <select ng-model="month" ng-options="month for month in allMonths track by month"></select>
+            </label>
         </div>
-      </div>
-    </div>
-    <div class="list card">
-      <div class="item item-divider">Upcoming</div>
-      <div class="item item-body">
-        <div>
-          You have <b>29</b> meetings on your calendar tomorrow.
+
+        <div class="list">
+
+            <label class="item item-input item-select">
+                <div class="input-label">
+                    Years
+                </div>
+                <select ng-model="year" ng-options="year for year in allYears track by year"></select>
+            </label>
         </div>
-      </div>
-    </div>
-  </ion-content>
+
+        <h3>To read {{book.book}} in {{year == 0 ? '' : year}} {{year == 1 ? 'year' : year !== 0 ? 'years' :'' }} {{year !== 0 && month !== 0 ? 'and' : ''}}
+           {{month == 0 ? '' : month}} {{month == 1 ? 'month' : month !== 0 ? 'months': ''}} you will have to read <b>{{formatPages(book, year, month)}} </b>{{formatPages(book, year, month) == 1 ? 'page' : 'pages'}} a day</h3>
+    </ion-content>
 </ion-view>
