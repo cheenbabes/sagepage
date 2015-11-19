@@ -114,8 +114,16 @@ angular.module('starter.controllers', [])
     $scope.chat = Chats.get($stateParams.chatId);
 })
 
-.controller('AccountCtrl', function ($scope) {
+.controller('AccountCtrl', function ($scope, $ionicPopup) {
     $scope.settings = {
         enableFriends: true
     };
+
+    $scope.buttonAlert = function (social) {
+        var confirmPopup = $ionicPopup.confirm({
+            title: 'Share Your Progress on ' + social + "!",
+            template: 'I read my pages today.'
+        });
+    }
+
 });
