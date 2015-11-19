@@ -4,3 +4,8 @@ img.center {
     display: block;
     margin: 0 auto;
 }
+
+.card-green .item {
+    border-color: #1bc98e;
+    border-width: medium;
+}

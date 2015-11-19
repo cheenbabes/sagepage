@@ -39,7 +39,11 @@
             </label>
         </div>
 
-        <h3>To read {{book.book}} in {{year == 0 ? '' : year}} {{year == 1 ? 'year' : year !== 0 ? 'years' :'' }} {{year !== 0 && month !== 0 ? 'and' : ''}}
-           {{month == 0 ? '' : month}} {{month == 1 ? 'month' : month !== 0 ? 'months': ''}} you will have to read <b>{{formatPages(book, year, month)}} </b>{{formatPages(book, year, month) == 1 ? 'page' : 'pages'}} a day</h3>
+        <div class="card-green">
+            <div class="item item-text-wrap">
+                To read <b>{{book.book}}</b> in {{year == 0 ? '' : year}} {{year == 1 ? 'year' : year !== 0 ? 'years' :'' }} {{year !== 0 && month !== 0 ? 'and' : ''}} {{month == 0 ? '' : month}} {{month == 1 ? 'month' : month !== 0 ? 'months': ''}} you will have to read <b>{{formatPages(book, year, month)}} </b>{{formatPages(book, year, month) == 1 ? 'page' : 'pages'}} a day
+            </div>
+        </div>
+
     </ion-content>
 </ion-view>
