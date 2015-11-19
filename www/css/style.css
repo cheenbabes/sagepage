@@ -9,3 +9,8 @@ img.center {
     border-color: #1bc98e;
     border-width: medium;
 }
+
+.buttons {
+    top: 0 !important;
+    height: 100% !important;
+}

@@ -73,9 +73,40 @@ angular.module('starter.controllers', [])
     //$scope.$on('$ionicView.enter', function(e) {
     //});
 
-    $scope.chats = Chats.all();
-    $scope.remove = function (chat) {
-        Chats.remove(chat);
+    $scope.datepickerObject = {
+        titleLabel: 'Title', //Optional
+        todayLabel: 'Today', //Optional
+        closeLabel: 'Close', //Optional
+        setLabel: 'Set', //Optional
+        setButtonType: 'button-balanced', //Optional
+        todayButtonType: 'button-stable', //Optional
+        closeButtonType: 'button-assertive', //Optional
+        inputDate: new Date(), //Optional
+        mondayFirst: true, //Optional
+        //                disabledDates: disabledDates, //Optional
+        //                weekDaysList: weekDaysList, //Optional
+        //                monthList: monthList, //Optional
+        templateType: 'popup', //Optional
+        showTodayButton: 'true', //Optional
+        modalHeaderColor: 'bar-positive', //Optional
+        modalFooterColor: 'bar-positive', //Optional
+        from: new Date(2012, 8, 2), //Optional
+        to: new Date(2018, 8, 25), //Optional
+        callback: function (val) { //Mandatory
+            datePickerCallback(val);
+        },
+        dateFormat: 'MM-dd-yyyy', //Optional
+        closeOnSelect: true, //Optional
+    };
+
+    var datePickerCallback = function (val) {
+        $scope.datepickerObject.inputDate = val;
+        if (typeof (val) === 'undefined') {
+            $scope.datepickerObject.inputDate = new Date();
+            console.log('No date selected. Defaulting to today\'s date');
+        } else {
+            console.log('Selected date is : ', val)
+        }
     };
 })
 
