@@ -1,6 +1,6 @@
 angular.module('starter.controllers', [])
 
-.controller('DashCtrl', function ($scope) {
+.controller('DashCtrl', function ($scope, $ionicPopup) {
     $scope.books = [
         {
             id: 1,
@@ -61,11 +61,26 @@ angular.module('starter.controllers', [])
         return Math.ceil(book.pages / (month * 30 + year * 365));
     }
 
-    $scope.groups = [{
-        name: 'My group',
-        items: [1, 2, 3]
-    }]
+    $scope.groups = [
+        {
+            name: '',
+            id: 1,
+            items: [{
 
+                subName: 'SubBubbles1',
+                subId: '1-1'
+
+            }]
+        }];
+
+    $scope.selectBook = function (book, group) {
+            $scope.book = book;
+            $scope.toggleGroup(group);
+        }
+        /*
+         * if given group is the selected group, deselect it
+         * else, select the given group
+         */
     $scope.toggleGroup = function (group) {
         if ($scope.isGroupShown(group)) {
             $scope.shownGroup = null;
@@ -76,6 +91,37 @@ angular.module('starter.controllers', [])
     $scope.isGroupShown = function (group) {
         return $scope.shownGroup === group;
     };
+
+
+    $scope.addMonth = function () {
+        $scope.month = $scope.month + 1;
+    }
+
+    $scope.subtractMonth = function () {
+        if ($scope.month <= 0) {
+            var alertPopup = $ionicPopup.alert({
+                title: 'Invalid',
+                template: 'Month cannot be negative!'
+            });
+        } else {
+            $scope.month = $scope.month - 1;
+        }
+    }
+
+    $scope.addYear = function () {
+        $scope.year = $scope.year + 1;
+    }
+
+    $scope.subtractYear = function () {
+        if ($scope.year <= 0) {
+            var alertPopup = $ionicPopup.alert({
+                title: 'Invalid',
+                template: 'Year cannot be negative!'
+            });
+        } else {
+            $scope.year = $scope.year - 1;
+        }
+    }
 
 
 })

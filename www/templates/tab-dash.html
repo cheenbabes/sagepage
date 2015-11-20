@@ -4,28 +4,6 @@
         <img src="img/sagepageblankbg.png" class="center">
 
 
-        <div class="panel-group" id="panel-quote-group">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h4 class="panel-title">
-                                <strong>{{book.book}}</strong>
-                                <span class="pull-right">
-                                    <a data-toggle="collapse" data-parent="#panel-quote-group" href="#collapseQuote">
-                                        <span class="toggle-icon glyphicon glyphicon-collapse-up"></span>
-                                    </a>
-                                </span>
-                              </h4>
-                </div>
-                <div id="collapseQuote" class="panel-collapse collapse in">
-                    <div class="panel-body">
-                        <blockquote>
-                            <p>When I am working on a problem I never think about beauty. I only think about how to solve the problem. But when I have finished, if the solution is not beautiful, I know it is wrong.</p>
-                            <footer><cite title="Source Title">Buckminster Fuller</cite> (1895-1983)</footer>
-                        </blockquote>
-                    </div>
-                </div>
-            </div>
-        </div>
 
         <div class="card" style="margin-top:2px; margin-bottom:8px">
             <div class="item item-text-wrap">
@@ -33,33 +11,58 @@
             </div>
         </div>
 
-        <div class="list" style="margin-bottom:8px">
-            <label class="item item-input item-select">
-                <div class="input-label">
-                    Book
+        <div class="list box-shadow-custom">
+            <div ng-repeat="group in groups">
+                <div class="item" ng-click="toggleGroup(group)" ng-class="{active: isGroupShown(group)}">
+                    <i class="icon" ng-class="isGroupShown(group) ? 'ion-minus' : 'ion-plus'" class="pull-right"></i> &nbsp; {{book.book}}
                 </div>
-                <select ng-model="book" ng-options="book.book for book in books track by book.id"></select>
-            </label>
+                <div class="item-accordion item" ng-repeat="book in books" ng-show="isGroupShown(group)">
+                    <label class="item item-radio" ng-click="selectBook(book, group)">
+                        <input type="radio" name="group">
+                        <div class="item-content">
+                            {{book.book}}
+                        </div>
+                        <i class="radio-icon ion-checkmark"></i>
+                    </label>
+                </div>
+            </div>
         </div>
 
-        <div class="list" style="margin-bottom:8px">
-            <label class="item item-input item-select">
-                <div class="input-label">
-                    Months
+        <div class="row" style="padding: 0 0 0 0px">
+            <div class="col col-50">
+                <div class="card">
+                    <div class="item item-text-wrap">{{month}} {{month == 1? 'Month' : "Months" }}
+                    </div>
                 </div>
-                <select ng-model="month" ng-options="month for month in allMonths track by month"></select>
-            </label>
+            </div>
+
+            <div class="col col-25">
+                <button class="button button-outline button-balanced button-block" ng-click="addMonth()"><span class="ion-plus-round"></span>
+                </button>
+            </div>
+            <div class="col col-25">
+                <button class="button button-outline button-positive button-block" ng-click="subtractMonth()"><span class="ion-minus-round"></button>
+            </div>
+        </div>
+            
+                 <div class="row" style="padding: 0 0 0 0px">
+            <div class="col col-50">
+                <div class="card">
+                    <div class="item item-text-wrap">{{year}} {{year == 1? 'Year' : "Years" }}
+                    </div>
+                </div>
+            </div>
+
+            <div class="col col-25">
+                <button class="button button-outline button-balanced button-block" ng-click="addYear()"><span class="ion-plus-round"></span>
+                </button>
+            </div>
+            <div class="col col-25">
+                <button class="button button-outline button-positive button-block" ng-click="subtractYear()"><span class="ion-minus-round"></button>
+            </div>
         </div>
 
-        <div class="list" style="margin-bottom:8px">
 
-            <label class="item item-input item-select">
-                <div class="input-label">
-                    Years
-                </div>
-                <select ng-model="year" ng-options="year for year in allYears track by year"></select>
-            </label>
-        </div>
 
         <div class="card-green">
             <div class="item item-text-wrap">
@@ -70,7 +73,7 @@
         <script type="text/javascript">
             $(document).ready(function () {
                 $('a[data-toggle="collapse"]').click(function () {
-                    $(this).find('span.toggle-icon').toggleClass('glyphicon-collapse-up glyphicon-collapse-down');
+                    $(this).find('span.toggle-icon').toggleClass('glyphicon-plus', 'glyphicon-minus')
                 })
             })
         </script>

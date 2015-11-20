@@ -17,8 +17,7 @@ img.center {
 
 .list .item.item-accordion {
     line-height: 38px;
-    padding-top: 0;
-    padding-bottom: 0;
+    padding: 0 0 0 0;
     transition: 0.09s all linear;
 }
 
@@ -29,4 +28,10 @@ img.center {
 .list .item.item-accordion.ng-hide-add,
 .list .item.item-accordion.ng-hide-remove {
     display: block !important;
+}
+
+.box-shadow-custom {
+    padding-top: 1px;
+    padding-bottom: 1px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 }
