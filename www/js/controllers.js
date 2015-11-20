@@ -61,6 +61,22 @@ angular.module('starter.controllers', [])
         return Math.ceil(book.pages / (month * 30 + year * 365));
     }
 
+    $scope.groups = [{
+        name: 'My group',
+        items: [1, 2, 3]
+    }]
+
+    $scope.toggleGroup = function (group) {
+        if ($scope.isGroupShown(group)) {
+            $scope.shownGroup = null;
+        } else {
+            $scope.shownGroup = group;
+        }
+    };
+    $scope.isGroupShown = function (group) {
+        return $scope.shownGroup === group;
+    };
+
 
 })
 
@@ -74,7 +90,7 @@ angular.module('starter.controllers', [])
     //});
 
     $scope.datepickerObject = {
-        titleLabel: 'Title', //Optional
+        titleLabel: 'Calendar', //Optional
         todayLabel: 'Today', //Optional
         closeLabel: 'Close', //Optional
         setLabel: 'Set', //Optional

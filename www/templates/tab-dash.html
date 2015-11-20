@@ -1,15 +1,37 @@
 <ion-view view-title="Be a Sage Page by Page">
-    <ion-content class="padding">
+    <ion-content class="padding" overflow-scroll="false">
 
-        <img src="../img/sagepageblankbg.png" class="center">
+        <img src="img/sagepageblankbg.png" class="center">
+
+
+        <div class="panel-group" id="panel-quote-group">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                                <strong>{{book.book}}</strong>
+                                <span class="pull-right">
+                                    <a data-toggle="collapse" data-parent="#panel-quote-group" href="#collapseQuote">
+                                        <span class="toggle-icon glyphicon glyphicon-collapse-up"></span>
+                                    </a>
+                                </span>
+                              </h4>
+                </div>
+                <div id="collapseQuote" class="panel-collapse collapse in">
+                    <div class="panel-body">
+                        <blockquote>
+                            <p>When I am working on a problem I never think about beauty. I only think about how to solve the problem. But when I have finished, if the solution is not beautiful, I know it is wrong.</p>
+                            <footer><cite title="Source Title">Buckminster Fuller</cite> (1895-1983)</footer>
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <div class="card" style="margin-top:2px; margin-bottom:8px">
             <div class="item item-text-wrap">
                 Select the book and time ranges below to see how many pages you will need to read daily in order to complete it.
             </div>
         </div>
-
-
 
         <div class="list" style="margin-bottom:8px">
             <label class="item item-input item-select">
@@ -44,6 +66,14 @@
                 To read <b>{{book.book}}</b> in {{year == 0 ? '' : year}} {{year == 1 ? 'year' : year !== 0 ? 'years' :'' }} {{year !== 0 && month !== 0 ? 'and' : ''}} {{month == 0 ? '' : month}} {{month == 1 ? 'month' : month !== 0 ? 'months': ''}} you will have to read <b>{{formatPages(book, year, month)}} </b>{{formatPages(book, year, month) == 1 ? 'page' : 'pages'}} a day
             </div>
         </div>
+
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('a[data-toggle="collapse"]').click(function () {
+                    $(this).find('span.toggle-icon').toggleClass('glyphicon-collapse-up glyphicon-collapse-down');
+                })
+            })
+        </script>
 
     </ion-content>
 </ion-view>
